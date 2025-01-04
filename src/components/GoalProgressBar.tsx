@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getBalance } from "@wagmi/core";
 import { config } from "../config";
 import { mainnet } from "@wagmi/core/chains";
