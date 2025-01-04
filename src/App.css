@@ -1,18 +1,57 @@
-body {
-  background-color: #0a0d12;
-}
-
 .app-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 48px;
+  padding: 0 20px;
+  min-height: 100vh;
+  background-color: #0b0b0e;
   color: white;
 }
 
 .app-title {
   font-family: Unbounded, sans-serif;
-  font-size: 7rem;
+  font-size: 48px;
   font-weight: bold;
   margin-bottom: 24px;
+}
+
+.content-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.progress-section {
+  flex: 1;
+}
+
+.phone-cover-section {
+  display: flex;
+  justify-content: center;
+}
+
+.phone-cover-image {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Media query for larger screens */
+@media (min-width: 1024px) {
+  .content-wrapper {
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .phone-cover-section {
+    flex: 0 0 400px; /* Fixed width for the phone cover section */
+  }
+
+  .phone-cover-image {
+    max-height: 600px;
+    width: auto;
+  }
 }

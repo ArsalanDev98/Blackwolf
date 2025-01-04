@@ -1,54 +1,53 @@
 import React, { useEffect, useState } from "react";
+import { getBalance } from "@wagmi/core";
+import { config } from "../config";
+import { mainnet } from "@wagmi/core/chains";
 import "./GoalProgressBar.css";
 
 interface WalletData {
   ethBalance: number;
   ethValue: number;
-  tokenValue: number;
+  usdtBalance: number;
   totalValue: number;
 }
+
+const USDT_CONTRACT = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
 
 const GoalProgressBar = () => {
   const [walletData, setWalletData] = useState<WalletData>({
     ethBalance: 0,
     ethValue: 0,
-    tokenValue: 0,
+    usdtBalance: 0,
     totalValue: 0,
   });
   const goalAmount = 5500000; // $5.5M USD goal
+  const walletAddress = "0xef339345335729F948d04306483780d01Ef3F038";
 
   const fetchWalletData = async () => {
-    const walletAddress = "0xE9a24FE99e7678fFd66a8a69B5ed0BA217787256";
-    const etherscanApiKey = "27K6KP9S41H3EXMVIRABS9AW2NX5V7AVIX";
-
     try {
-      // Fetch ETH balance and value
-      const ethBalanceUrl = `https://api.etherscan.io/api?module=account&action=balance&address=${walletAddress}&tag=latest&apikey=${etherscanApiKey}`;
-      const ethResponse = await fetch(ethBalanceUrl);
-      const ethData = await ethResponse.json();
-      const ethBalance = parseFloat(ethData.result) / 1e18;
+      // Get ETH balance
+      const ethBalance = await getBalance(config, {
+        address: walletAddress as `0x${string}`,
+        chainId: mainnet.id,
+      });
 
-      // Get ETH price
-      const ethPriceUrl = `https://api.etherscan.io/api?module=stats&action=ethprice&apikey=${etherscanApiKey}`;
-      const priceResponse = await fetch(ethPriceUrl);
-      const priceData = await priceResponse.json();
-      const ethPrice = parseFloat(priceData.result.ethusd);
-      const ethValue = ethBalance * ethPrice;
+      // Get USDT balance
+      const usdtBalance = await getBalance(config, {
+        address: walletAddress as `0x${string}`,
+        token: USDT_CONTRACT as `0x${string}`,
+        chainId: mainnet.id,
+      });
 
-      // Get token holdings using account token balance endpoint
-      const tokenBalanceUrl = `https://api.etherscan.io/api?module=account&action=tokenbalance&address=${walletAddress}&contractaddress=0x0000000000000000000000000000000000000000&tag=latest&apikey=${etherscanApiKey}`;
-      const tokenResponse = await fetch(tokenBalanceUrl);
-      const tokenData = await tokenResponse.json();
-      const tokenValue = parseFloat(tokenData.result); // Use actual API value or fallback to screenshot value
-
-      // Calculate total value
-      const totalValue = ethValue + tokenValue;
+      // Calculate values (using ETH price from your screenshot for now)
+      const ethPrice = 3639.22;
+      const ethValue = Number(ethBalance.formatted) * ethPrice;
+      const usdtValue = Number(usdtBalance.formatted); // 1 USDT ≈ 1 USD
 
       setWalletData({
-        ethBalance,
+        ethBalance: Number(ethBalance.formatted),
         ethValue,
-        tokenValue,
-        totalValue,
+        usdtBalance: usdtValue,
+        totalValue: ethValue + usdtValue,
       });
     } catch (error) {
       console.error("Error fetching wallet data:", error);
@@ -61,10 +60,8 @@ const GoalProgressBar = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const progressPercentage = Math.min(
-    (walletData.totalValue / goalAmount) * 100,
-    100
-  );
+  // Calculate percentage with more precision for small numbers
+  const progressPercentage = (walletData.totalValue / goalAmount) * 100;
 
   return (
     <div className="progress-container">
@@ -76,7 +73,7 @@ const GoalProgressBar = () => {
               maximumFractionDigits: 2,
             })}
           </span>
-          <span className="subtitle">Raised</span>
+          <span className="subtitle">collected</span>
         </div>
         <div>
           <span>Goal </span>
@@ -102,18 +99,20 @@ const GoalProgressBar = () => {
 
       <div className="progress-footer">
         <div>
-          <span className="percentage">{progressPercentage.toFixed(1)}%</span>{" "}
+          <span className="percentage">
+            {progressPercentage > 0.01
+              ? progressPercentage.toFixed(1)
+              : progressPercentage.toFixed(4)}
+            %
+          </span>{" "}
           of goal reached
         </div>
         <div className="eth-balance">
-          ETH: $
+          {walletData.ethBalance.toFixed(4)} ETH ($
           {walletData.ethValue.toLocaleString("en-US", {
             maximumFractionDigits: 2,
           })}
-          | Tokens: $
-          {walletData.tokenValue.toLocaleString("en-US", {
-            maximumFractionDigits: 2,
-          })}
+          ) | {walletData.usdtBalance.toFixed(2)} USDT
         </div>
       </div>
     </div>
