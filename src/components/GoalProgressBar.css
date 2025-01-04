@@ -1,15 +1,23 @@
 .progress-container {
-  max-width: 800px;
   width: 100%;
-  margin: 0 auto;
-  padding: 24px;
 }
 
 .progress-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-between; /* Spread RAISED and GOAL to opposite sides */
+  align-items: center; /* Align vertically */
   margin-bottom: 16px;
+}
+
+.progress-header div {
+  display: flex;
+  flex-direction: column; /* Stack the label and value vertically */
+  align-items: flex-start; /* Align text to the left */
+}
+
+.label {
+  opacity: 0.6;
+  font-size: 14px;
 }
 
 .value-text {
@@ -17,48 +25,80 @@
   font-weight: bold;
 }
 
-.subtitle {
-  margin-left: 8px;
-  color: #666;
-}
-
 .progress-bar-container {
-  position: relative;
   height: 48px;
-  background-color: #e5e7eb;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 24px;
   overflow: hidden;
+  position: relative;
 }
 
 .progress-bar {
-  position: absolute;
   height: 100%;
-  background-color: #00e5ff; /* Bright cyan color similar to the image */
+  background-color: #00e5ff;
   border-radius: 24px;
-  transition: width 500ms ease-in-out;
+  width: 0;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding-right: 16px;
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.5); /* Adding a subtle glow effect */
+  justify-content: center;
+  position: relative;
+}
+
+.progress-bar.animate {
+  transition: width 1.5s ease-out;
 }
 
 .progress-text {
   color: white;
   font-weight: bold;
   white-space: nowrap;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Makes the text more readable */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: all 1.5s ease-out;
 }
 
-.progress-footer {
-  display: flex;
-  justify-content: center;
-  margin-top: 16px;
-  text-align: center;
-}
+@media (max-width: 768px) {
+  .content-wrapper {
+    width: 100%;
+    padding: 0 10px;
+    margin-top: 20%;
+    align-content: center;
+    align-items: center;
+  }
 
-.percentage-text {
-  font-size: 14px;
-  opacity: 0.8;
-  letter-spacing: 0.05em;
+  .app-title {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .progress-container {
+    transform: scale(0.95);
+  }
+
+  .progress-header {
+    flex-direction: row; /* Keep them side by side on mobile */
+  }
+
+  .value-text {
+    font-size: 20px; /* Slightly smaller font size */
+  }
+
+  .label {
+    font-size: 12px; /* Adjust label font size for mobile */
+  }
+
+  .progress-bar-container {
+    height: 36px;
+  }
+
+  .progress-text {
+    font-size: 14px;
+  }
+
+  .phone-cover-section {
+    margin-top: 50px;
+  }
+
+  .phone-cover-image {
+    max-width: 220px;
+  }
 }
