@@ -5,7 +5,7 @@ import "./App.css";
 const App: React.FC = () => {
   return (
     <div className="app-container">
-      <h1 className="app-title">Wallet Value Progress</h1>
+      <h1 className="app-title">BLACK WOLF VPN RAISE</h1>
       <div className="content-wrapper">
         <div className="progress-section">
           <GoalProgressBar />

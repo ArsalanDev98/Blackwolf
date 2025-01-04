@@ -19,6 +19,7 @@
 
 .subtitle {
   margin-left: 8px;
+  color: #666;
 }
 
 .progress-bar-container {
@@ -51,15 +52,13 @@
 
 .progress-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 16px;
-  font-size: 18px;
+  text-align: center;
 }
 
-.percentage {
-  font-weight: bold;
-}
-
-.eth-balance {
-  color: #666;
+.percentage-text {
+  font-size: 14px;
+  opacity: 0.8;
+  letter-spacing: 0.05em;
 }

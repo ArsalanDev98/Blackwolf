@@ -21,7 +21,7 @@ const GoalProgressBar = () => {
     totalValue: 0,
   });
   const goalAmount = 5500000; // $5.5M USD goal
-  const walletAddress = "0xef339345335729F948d04306483780d01Ef3F038";
+  const walletAddress = "0xc67CcfD01a22277CdaF403e20fe4FC161E07B8f8";
 
   const fetchWalletData = async () => {
     try {
@@ -98,21 +98,11 @@ const GoalProgressBar = () => {
       </div>
 
       <div className="progress-footer">
-        <div>
-          <span className="percentage">
-            {progressPercentage > 0.01
-              ? progressPercentage.toFixed(1)
-              : progressPercentage.toFixed(4)}
-            %
-          </span>{" "}
-          of goal reached
-        </div>
-        <div className="eth-balance">
-          {walletData.ethBalance.toFixed(4)} ETH ($
-          {walletData.ethValue.toLocaleString("en-US", {
-            maximumFractionDigits: 2,
-          })}
-          ) | {walletData.usdtBalance.toFixed(2)} USDT
+        <div className="percentage-text">
+          {progressPercentage > 0.01
+            ? progressPercentage.toFixed(4)
+            : progressPercentage.toFixed(4)}
+          % OF GOAL REACHED
         </div>
       </div>
     </div>
