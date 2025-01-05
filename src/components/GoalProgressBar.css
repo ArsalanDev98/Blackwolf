@@ -4,15 +4,15 @@
 
 .progress-header {
   display: flex;
-  justify-content: space-between; /* Spread RAISED and GOAL to opposite sides */
-  align-items: center; /* Align vertically */
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 16px;
 }
 
 .progress-header div {
   display: flex;
-  flex-direction: column; /* Stack the label and value vertically */
-  align-items: flex-start; /* Align text to the left */
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .label {
@@ -75,15 +75,15 @@
   }
 
   .progress-header {
-    flex-direction: row; /* Keep them side by side on mobile */
+    flex-direction: row;
   }
 
   .value-text {
-    font-size: 20px; /* Slightly smaller font size */
+    font-size: 20px;
   }
 
   .label {
-    font-size: 12px; /* Adjust label font size for mobile */
+    font-size: 12px;
   }
 
   .progress-bar-container {
