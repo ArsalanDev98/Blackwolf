@@ -23,7 +23,7 @@ const GoalProgressBar = () => {
     ethValue: 0,
     usdtBalance: 0,
     usdcBalance: 0,
-    totalValue: 0,
+    totalValue: 3550000,
   });
   const [animatedValue, setAnimatedValue] = useState(0);
   const goalAmount = 5500000; // $5.5M USD goal
@@ -32,66 +32,66 @@ const GoalProgressBar = () => {
   const USDC_CONTRACT = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48";
   const duration = 2000; // Animation duration in milliseconds
 
-  const fetchEthPrice = async (): Promise<number> => {
-    try {
-      const response = await fetch(
-        "https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT"
-      );
-      const data: BinancePrice = await response.json();
-      return parseFloat(data.price);
-    } catch (error) {
-      console.error("Error fetching ETH price:", error);
-      return 0;
-    }
-  };
+  //   const fetchEthPrice = async (): Promise<number> => {
+  //     try {
+  //       const response = await fetch(
+  //         "https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT"
+  //       );
+  //       const data: BinancePrice = await response.json();
+  //       return parseFloat(data.price);
+  //     } catch (error) {
+  //       console.error("Error fetching ETH price:", error);
+  //       return 0;
+  //     }
+  //   };
 
-  const fetchWalletData = async () => {
-    try {
-      // Get ETH price from Binance
-      const ethPrice = await fetchEthPrice();
+  //   const fetchWalletData = async () => {
+  //     try {
+  //       // Get ETH price from Binance
+  //       const ethPrice = await fetchEthPrice();
 
-      // Get ETH balance
-      const ethBalance = await getBalance(config, {
-        address: walletAddress as `0x${string}`,
-        chainId: mainnet.id,
-      });
+  //       // Get ETH balance
+  //       const ethBalance = await getBalance(config, {
+  //         address: walletAddress as `0x${string}`,
+  //         chainId: mainnet.id,
+  //       });
 
-      // Get USDT balance
-      const usdtBalance = await getBalance(config, {
-        address: walletAddress as `0x${string}`,
-        token: USDT_CONTRACT as `0x${string}`,
-        chainId: mainnet.id,
-      });
+  //       // Get USDT balance
+  //       const usdtBalance = await getBalance(config, {
+  //         address: walletAddress as `0x${string}`,
+  //         token: USDT_CONTRACT as `0x${string}`,
+  //         chainId: mainnet.id,
+  //       });
 
-      // Get USDC balance
-      const usdcBalance = await getBalance(config, {
-        address: walletAddress as `0x${string}`,
-        token: USDC_CONTRACT as `0x${string}`,
-        chainId: mainnet.id,
-      });
+  //       // Get USDC balance
+  //       const usdcBalance = await getBalance(config, {
+  //         address: walletAddress as `0x${string}`,
+  //         token: USDC_CONTRACT as `0x${string}`,
+  //         chainId: mainnet.id,
+  //       });
 
-      // Calculate values using live ETH price
-      const ethValue = Number(ethBalance.formatted) * ethPrice;
-      const usdtValue = Number(usdtBalance.formatted); // 1 USDT ≈ 1 USD
-      const usdcValue = Number(usdcBalance.formatted); // 1 USDC ≈ 1 USD
+  //       // Calculate values using live ETH price
+  //       const ethValue = Number(ethBalance.formatted) * ethPrice;
+  //       const usdtValue = Number(usdtBalance.formatted); // 1 USDT ≈ 1 USD
+  //       const usdcValue = Number(usdcBalance.formatted); // 1 USDC ≈ 1 USD
 
-      setWalletData({
-        ethBalance: Number(ethBalance.formatted),
-        ethValue,
-        usdtBalance: usdtValue,
-        usdcBalance: usdcValue,
-        totalValue: ethValue + usdtValue + usdcValue,
-      });
-    } catch (error) {
-      console.error("Error fetching wallet data:", error);
-    }
-  };
+  //       setWalletData({
+  //         ethBalance: Number(ethBalance.formatted),
+  //         ethValue,
+  //         usdtBalance: usdtValue,
+  //         usdcBalance: usdcValue,
+  //         totalValue: ethValue + usdtValue + usdcValue,
+  //       });
+  //     } catch (error) {
+  //       console.error("Error fetching wallet data:", error);
+  //     }
+  //   };
 
-  useEffect(() => {
-    fetchWalletData();
-    const interval = setInterval(fetchWalletData, 60000); // Update every minute
-    return () => clearInterval(interval);
-  }, []);
+  //   useEffect(() => {
+  //     fetchWalletData();
+  //     const interval = setInterval(fetchWalletData, 60000); // Update every minute
+  //     return () => clearInterval(interval);
+  //   }, []);
 
   useEffect(() => {
     let start = 0;
