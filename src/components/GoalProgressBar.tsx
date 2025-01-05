@@ -11,8 +11,6 @@ interface WalletData {
   totalValue: number;
 }
 
-//const USDT_CONTRACT = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
-
 const GoalProgressBar = () => {
   const [walletData, setWalletData] = useState<WalletData>({
     ethBalance: 0,
@@ -23,8 +21,9 @@ const GoalProgressBar = () => {
   const [animatedValue, setAnimatedValue] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const goalAmount = 5500000; // $5.5M USD goal
-  //const walletAddress = "0xc67CcfD01a22277CdaF403e20fe4FC161E07B8f8";
-
+  const walletAddress = "0xc67CcfD01a22277CdaF403e20fe4FC161E07B8f8";
+  const USDT_CONTRACT = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
+  const duration = 2000; // Animation duration in milliseconds
   /*
   const fetchWalletData = async () => {
     try {
@@ -57,27 +56,32 @@ const GoalProgressBar = () => {
     }
   };
 
-  
   useEffect(() => {
     fetchWalletData();
     const interval = setInterval(fetchWalletData, 60000);
     return () => clearInterval(interval);
   }, []);
-  */
-
-  // Add animation effect whenever walletData.totalValue changes
+*/
   useEffect(() => {
-    setAnimatedValue(0);
-    setIsAnimating(false);
+    let start = 0;
 
-    // Start animation after a short delay
-    setTimeout(() => {
-      setIsAnimating(true);
-      setAnimatedValue(walletData.totalValue);
-    }, 500);
-  }, [walletData.totalValue]);
+    const step = (timestamp: number) => {
+      const progress = Math.min((timestamp - start) / duration, 1); // Calculate progress
+      const animatedValue = progress * walletData.totalValue; // Animate total value
+      setAnimatedValue(animatedValue);
 
-  const progressPercentage = (animatedValue / goalAmount) * 100;
+      if (progress < 1) {
+        requestAnimationFrame(step); // Continue animation
+      }
+    };
+
+    requestAnimationFrame((timestamp) => {
+      start = timestamp;
+      step(timestamp);
+    });
+  }, [walletData.totalValue, duration]);
+
+  const progressPercentage = (animatedValue / goalAmount) * 100; // Dynamically calculate percentage
 
   return (
     <div className="progress-container">
@@ -85,12 +89,7 @@ const GoalProgressBar = () => {
         <div>
           <span className="label">RAISED: </span>
           <span className="value-text">
-            $
-            {isAnimating
-              ? animatedValue.toLocaleString("en-US", {
-                  maximumFractionDigits: 2,
-                })
-              : "0.00"}
+            ${animatedValue.toLocaleString("en-US")}
           </span>
         </div>
         <div className="goal-text">
@@ -103,7 +102,7 @@ const GoalProgressBar = () => {
 
       <div className="progress-bar-container">
         <div
-          className={`progress-bar ${isAnimating ? "animate" : ""}`}
+          className="progress-bar"
           style={{ width: `${progressPercentage}%` }}
         >
           <span className="progress-text">
