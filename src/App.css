@@ -68,13 +68,14 @@ html {
 }
 
 .phone-cover-section {
-  position: absolute; /* Keeps it positioned relative to the app container */
-  bottom: 0; /* Aligns the section at the bottom of the viewport */
+  position: relative; /* Change from absolute to relative to prevent overlap */
+  bottom: auto; /* Remove bottom positioning */
   width: 100%;
-  display: flex; /* Enable flex layout */
-  justify-content: center; /* Center horizontally */
-  align-items: flex-end; /* Align children (image) at the bottom */
-  z-index: 1; /* Ensure it doesn't overlap improperly */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 0; /* Lower the z-index so it doesn't overlap other elements */
+  margin-top: 20%; /* Add spacing above the phone image */
 }
 
 .phone-cover-image {
