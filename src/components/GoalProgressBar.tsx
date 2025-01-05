@@ -107,7 +107,7 @@ const GoalProgressBar = () => {
           style={{ width: `${progressPercentage}%` }}
         >
           <span className="progress-text">
-            {progressPercentage.toFixed(4)}%
+            {Math.round(progressPercentage)}%
           </span>
         </div>
       </div>
