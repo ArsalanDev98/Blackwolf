@@ -19,12 +19,13 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  justify-content: space-between; /* Distribute space between progress bar and phone */
+  height: 100vh; /* Ensure the container exactly fills the viewport */
   background: linear-gradient(249.52deg, #131620 0%, #07090d 100%);
   color: white;
   position: relative;
   overflow: hidden;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
 }
 
 .app-title {
@@ -37,13 +38,51 @@ html {
   padding: 0 20px;
 }
 
+.app-subtitle {
+  font-size: 20px;
+  font-weight: 400;
+  color: white;
+  text-align: center;
+  margin-top: 8px; /* Add spacing below the header */
+  margin-bottom: 24px; /* Add spacing above the rest of the content */
+  line-height: 1.5;
+  max-width: 600px;
+}
+
 .content-wrapper {
-  width: 90%;
-  max-width: 1400px;
-  position: relative;
+  flex: 1; /* Ensure it fills remaining space */
   display: flex;
   flex-direction: column;
+  justify-content: flex-start; /* Keep the progress bar at the top */
+  align-items: center;
+  width: 90%;
+  max-width: 1400px;
   padding: 0 20px;
+}
+
+.progress-section {
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
+}
+
+.phone-cover-section {
+  position: absolute; /* Keeps it positioned relative to the app container */
+  bottom: 0; /* Aligns the section at the bottom of the viewport */
+  width: 100%;
+  display: flex; /* Enable flex layout */
+  justify-content: center; /* Center horizontally */
+  align-items: flex-end; /* Align children (image) at the bottom */
+  z-index: 1; /* Ensure it doesn't overlap improperly */
+}
+
+.phone-cover-image {
+  max-width: 300px;
+  height: auto;
+  aspect-ratio: 1 / 1.48;
+  object-fit: contain;
+  align-self: flex-end; /* Push the image to the bottom of the section */
 }
 
 @media (max-width: 768px) {
@@ -67,29 +106,6 @@ html {
   }
 }
 
-.progress-section {
-  width: 100%;
-  max-width: 800px;
-  position: relative;
-  z-index: 1;
-}
-
-.phone-cover-section {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.phone-cover-image {
-  max-width: 300px;
-  height: auto;
-  aspect-ratio: 1 / 1.48;
-  align-self: center;
-}
-
-/* Media queries */
 @media (min-width: 480px) {
   .phone-cover-image {
     transform: translate(-10px, -50px);
