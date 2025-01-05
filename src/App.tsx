@@ -5,7 +5,7 @@ import "./App.css";
 const App: React.FC = () => {
   return (
     <div className="app-container">
-      <h1 className="app-title">BLACK WOLF VPN RAISE</h1>
+      <h1 className="app-title">BLACK WOLF VPN PRESALE</h1>
       <p className="app-subtitle">
         The most secure private unblockable VPN and much more…
       </p>
