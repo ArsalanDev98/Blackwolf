@@ -18,13 +18,24 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  height: 100vh;
-  background: linear-gradient(249.52deg, #131620 0%, #07090d 100%);
+  justify-content: flex-start; /* Changed from space-between */
+  min-height: 100vh; /* Changed from height: 100vh */
   color: white;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Changed from hidden */
+}
+
+.app-section {
   padding: 20px 20px 0 20px;
+  background: linear-gradient(249.52deg, #131620 0%, #07090d 100%);
+  width: 100%;
+}
+
+.app-wrapper {
+  width: 100%;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1400px;
 }
 
 .app-title {
@@ -32,7 +43,6 @@ html {
   font-weight: bold;
   margin-bottom: 24px;
   width: 100%;
-  max-width: 1200px;
   text-align: center;
   padding: 0 20px;
 }
@@ -45,7 +55,6 @@ html {
   margin-top: 8px;
   margin-bottom: 24px;
   line-height: 1.5;
-  max-width: 600px;
 }
 
 .content-wrapper {
@@ -57,6 +66,7 @@ html {
   width: 90%;
   max-width: 1400px;
   padding: 0 20px;
+  width: 100%;
 }
 
 .progress-section {

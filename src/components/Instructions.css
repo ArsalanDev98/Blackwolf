@@ -1,0 +1,95 @@
+.instructions-section {
+  width: 100%;
+  background-color: #07090d;
+  padding: 20px 20px 0 20px;
+}
+
+.instructions-wrapper {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 20px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.instructions-content {
+  width: 100%;
+  max-width: 800px;
+}
+
+.instructions-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: white;
+  text-align: center;
+}
+
+.instructions-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.instructions-list {
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+.instructions-list li {
+  margin-bottom: 16px;
+}
+
+.wallet-address {
+  font-family: monospace;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  word-break: break-all;
+}
+
+@media (max-width: 768px) {
+  .instructions-section {
+  }
+
+  .instructions-wrapper {
+    padding: 0 15px;
+  }
+
+  .instructions-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .instructions-text {
+    font-size: 16px;
+  }
+
+  .instructions-list li {
+    margin-bottom: 14px;
+  }
+
+  .wallet-address {
+    font-size: 14px;
+    padding: 3px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .instructions-section {
+  }
+
+  .instructions-wrapper {
+    padding: 0 10px;
+  }
+
+  .instructions-title {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .instructions-list li {
+    margin-bottom: 12px;
+  }
+}
