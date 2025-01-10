@@ -8,17 +8,21 @@ const Instructions: React.FC = () => {
         <div className="instructions-content">
           <h2 className="instructions-title">How to buy the presale</h2>
           <div className="instructions-text">
-            <ol className="instructions-list">
-              <li>
-                Send USDT (ETH) to{" "}
-                <span className="wallet-address">
-                  0x772740511b963fa949334c41508B3Dc940ef7661
-                </span>{" "}
-                from a non-exchange wallet.
-              </li>
-              <li>The presale tokens will get sent to this wallet.</li>
-              <li>Enjoy your tokens.</li>
-            </ol>
+            Fill out the Google Form:{" "}
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdeTvJrvv4siJOwVobf0yOjJ4u8vXRoN_kmqYNcrCpX0-AfJg/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "#33ffff", textDecoration: "underline" }}
+            >
+              https://docs.google.com/forms/d/e/1FAIpQLSdeTvJ
+            </a>
+          </div>
+          <div className="animated-logo-container">
+            <video autoPlay loop muted playsInline className="animated-logo">
+              <source src="/blackwolf.mp4" type="video/mp4" />
+              <source src="/blackwolf.webm" type="video/webm" />
+            </video>
           </div>
         </div>
       </div>

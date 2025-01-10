@@ -1,7 +1,7 @@
 .instructions-section {
   width: 100%;
   background-color: #07090d;
-  padding: 20px 20px 0 20px;
+  padding: 20px 20px 30px 20px;
 }
 
 .instructions-wrapper {
@@ -30,29 +30,18 @@
   font-size: 18px;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.9);
-}
-
-.instructions-list {
-  list-style-position: inside;
-  padding-left: 0;
-}
-
-.instructions-list li {
-  margin-bottom: 16px;
-}
-
-.wallet-address {
-  font-family: monospace;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 4px 8px;
-  border-radius: 4px;
   word-break: break-all;
+  max-width: 100%;
+}
+
+.instructions-text a {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  display: inline-block;
+  max-width: 100%;
 }
 
 @media (max-width: 768px) {
-  .instructions-section {
-  }
-
   .instructions-wrapper {
     padding: 0 15px;
   }
@@ -65,21 +54,9 @@
   .instructions-text {
     font-size: 16px;
   }
-
-  .instructions-list li {
-    margin-bottom: 14px;
-  }
-
-  .wallet-address {
-    font-size: 14px;
-    padding: 3px 6px;
-  }
 }
 
 @media (max-width: 480px) {
-  .instructions-section {
-  }
-
   .instructions-wrapper {
     padding: 0 10px;
   }
@@ -88,8 +65,20 @@
     font-size: 22px;
     margin-bottom: 16px;
   }
+}
 
-  .instructions-list li {
-    margin-bottom: 12px;
-  }
+.animated-logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.animated-logo {
+  width: 420px; /* Made smaller to match the actual logo size */
+  height: auto;
+  mix-blend-mode: screen; /* This helps remove dark backgrounds */
+  object-fit: contain;
+  background: transparent;
 }
