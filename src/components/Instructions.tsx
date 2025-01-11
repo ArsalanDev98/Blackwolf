@@ -6,16 +6,16 @@ const Instructions: React.FC = () => {
     <div className="instructions-section">
       <div className="instructions-wrapper">
         <div className="instructions-content">
-          <h2 className="instructions-title">How to buy the presale</h2>
+          <h2 className="instructions-title">How to buy the ICO</h2>
           <div className="instructions-text">
             Fill out the Google Form:{" "}
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdeTvJrvv4siJOwVobf0yOjJ4u8vXRoN_kmqYNcrCpX0-AfJg/viewform"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSemSoLFxvfY5wAIB92S_HSrw-9ORpw_sT_OXE412i9RvXyynQ/viewform?usp=dialog"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "#33ffff", textDecoration: "underline" }}
             >
-              https://docs.google.com/forms/d/e/1FAIpQLSdeTvJ
+              https://docs.google.com/forms/d/e/1FAIpQLSemSoLF
             </a>
           </div>
           <div className="animated-logo-container">

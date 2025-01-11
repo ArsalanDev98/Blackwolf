@@ -8,7 +8,7 @@ const App: React.FC = () => {
     <div className="app-container">
       <div className="app-section">
         <div className="app-wrapper">
-          <h1 className="app-title">BLACK WOLF VPN PRESALE</h1>
+          <h1 className="app-title">BLACK WOLF VPN ICO</h1>
           <p className="app-subtitle">
             The most secure private unblockable VPN and much more…
           </p>

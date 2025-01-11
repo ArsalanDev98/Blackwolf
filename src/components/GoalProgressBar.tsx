@@ -36,7 +36,7 @@ const GoalProgressBar = () => {
     timestamp: 0,
   });
 
-  const goalAmount = 5500000;
+  const goalAmount = 1200000;
   const walletAddress = "0xc3B55677f55093C48B4D7748610eA9dc3A5B5D25";
   const USDT_CONTRACT = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
   const USDC_CONTRACT = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48";
