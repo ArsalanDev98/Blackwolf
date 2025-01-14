@@ -179,7 +179,7 @@ const GoalProgressBar = () => {
           <span className="value-text">
             $
             {animatedValue.toLocaleString("en-US", {
-              maximumFractionDigits: 2,
+              maximumFractionDigits: 0,
             })}
           </span>
         </div>
